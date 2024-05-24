@@ -5,7 +5,11 @@
       <entry key="app">
         <State />
       </entry>
+<<<<<<< HEAD
       <entry key="integrationTestContententIntoEvent">
+=======
+      <entry key="showbtn_check()">
+>>>>>>> b907add8b66ad13e54ca91c2c2023edb2fb31e92
         <State />
       </entry>
     </value>

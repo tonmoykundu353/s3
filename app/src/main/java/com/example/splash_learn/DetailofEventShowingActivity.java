@@ -149,6 +149,21 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
                 contestentemailobj = contestentemail.getText().toString();
                 ContactNoobj = ContactNo.getText().toString();
 
+
+                // Validation checks
+                if (!contestentemailobj.endsWith("@gmail.com")) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (ContactNoobj.length() != 11) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+
                 // Use Factory Design Pattern to create Contestentinfo instance
                 InfoFactory factory = new ConcreteInfoFactory();
                 Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
