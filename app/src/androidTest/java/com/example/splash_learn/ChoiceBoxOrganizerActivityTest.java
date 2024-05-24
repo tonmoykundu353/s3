@@ -54,5 +54,6 @@ public class ChoiceBoxOrganizerActivityTest {
         // Check if the ListView in RegisteredStudentEtEventActivity is displayed
         Espresso.onView(ViewMatchers.withId(R.id.Reg_stud_at_event_listview_id))
                 .check(matches(isDisplayed()));
+
     }
 }
