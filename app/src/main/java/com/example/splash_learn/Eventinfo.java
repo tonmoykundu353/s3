@@ -5,6 +5,7 @@ package com.example.splash_learn;
  *  This is eventInfor class
  */
 public class Eventinfo {
+
     String Clubname,EventName,EventPlace,EventRegFees,EventDate,OrganizedBy;
 
     /**
