@@ -99,7 +99,7 @@
 
 
 package com.example.splash_learn;
-
+import com.example.splash_learn.SuperSingleton.SuperSingleton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -156,53 +156,49 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
                 contestentnameobj = contestentname.getText().toString();
                 contestentemailobj = contestentemail.getText().toString();
                 ContactNoobj = ContactNo.getText().toString();
+                if (contestentnameobj.isEmpty() || contestentemailobj.isEmpty() || ContactNoobj.isEmpty()) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return; // Prevent further execution
+                }else{
 
+
+                    if (!contestentemailobj.contains("@gmail.com")) {
+                        Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                     if (ContactNoobj.length() != 11) {
+                        Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
+                        return;
+
+
+                    }
+
+                }
 
                 // Validation checks
-                if (!contestentemailobj.endsWith("@gmail.com")) {
-                    //Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
-                    toastshowingtextview.setText("Email must be a @gmail.com address");
-                    toastshowingtextview.setVisibility(View.VISIBLE); // Make the TextView visible
-
-                    // Delay hiding the TextView after 3 seconds (adjust the delay time as needed)
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            toastshowingtextview.setVisibility(View.INVISIBLE); // Hide the TextView
-                        }
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                }
-
-                if (ContactNoobj.length() != 11) {
-                    //Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
-                    toastshowingtextview.setText("Mobile number must be 11 digits");
-                    toastshowingtextview.setVisibility(View.VISIBLE); // Make the TextView visible
-
-                    // Delay hiding the TextView after 3 seconds (adjust the delay time as needed)
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            toastshowingtextview.setVisibility(View.INVISIBLE); // Hide the TextView
-                        }
-                    }, 3000);
-                }
 
 
 
 
-                // Use Factory Design Pattern to create Contestentinfo instance
-                InfoFactory factory = new ConcreteInfoFactory();
-                Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
+
+                    // Use Factory Design Pattern to create Contestentinfo instance
+                    InfoFactory factory = new ConcreteInfoFactory();
+                    Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
 
 
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
-                ref.setValue(contestentinfo);
+                   // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
 
-                Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+                    DatabaseReference ref=SuperSingleton.getSuperSingleton();
+                    ref.child("Contestentinfo").child(User).child(contestentnameobj).setValue(contestentinfo);
 
-                Intent intent=new Intent(DetailofEventShowingActivity.this,home_activity.class);
-                startActivity(intent);
+                    Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+
+                    Intent intent=new Intent(DetailofEventShowingActivity.this,home_activity.class);
+                    startActivity(intent);
+
+
             }
         });
     }
