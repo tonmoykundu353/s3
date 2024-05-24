@@ -16,7 +16,7 @@
 
         />
     <item
-        android:title="Rate us"
+        android:title="My links"
         android:id="@+id/rate_us"
         android:icon="@drawable/rate_us"
         app:showAsAction="withText"
