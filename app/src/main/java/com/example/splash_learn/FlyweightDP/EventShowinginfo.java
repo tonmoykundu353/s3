@@ -1,40 +1,54 @@
 package com.example.splash_learn.FlyweightDP;
 
-//package com.example.splash_learn;
-
 public class EventShowinginfo {
-    private String eventName;
-    private String clubname;
-    private String eventDate;
-    private String eventRegFees;
-    private EventSharedProperties sharedProperties;
-
-    public EventShowinginfo(String eventName, String clubname, String eventDate, String eventRegFees, EventSharedProperties sharedProperties) {
-        this.eventName = eventName;
+    String clubname,eventdate,eventname,eventRegFees;
+    EventSharedProperties eventSharedProperties;
+    public EventShowinginfo(String clubname, String eventdate, String eventname, String eventRegFees, EventSharedProperties eventSharedProperties) {
         this.clubname = clubname;
-        this.eventDate = eventDate;
+        this.eventdate = eventdate;
+        this.eventname = eventname;
         this.eventRegFees = eventRegFees;
-        this.sharedProperties = sharedProperties;
+        this.eventSharedProperties = eventSharedProperties;
     }
 
-    public String getEventName() {
-        return eventName;
+    public EventSharedProperties getEventSharedProperties() {
+        return eventSharedProperties;
     }
+
+    public void setEventSharedProperties(EventSharedProperties eventSharedProperties) {
+        this.eventSharedProperties = eventSharedProperties;
+    }
+
 
     public String getClubname() {
         return clubname;
     }
 
-    public String getEventDate() {
-        return eventDate;
+    public void setClubname(String clubname) {
+        this.clubname = clubname;
+    }
+
+    public String getEventdate() {
+        return eventdate;
+    }
+
+    public void setEventdate(String eventdate) {
+        this.eventdate = eventdate;
+    }
+
+    public String getEventname() {
+        return eventname;
+    }
+
+    public void setEventname(String eventname) {
+        this.eventname = eventname;
     }
 
     public String getEventRegFees() {
         return eventRegFees;
     }
 
-    public EventSharedProperties getSharedProperties() {
-        return sharedProperties;
+    public void setEventRegFees(String eventRegFees) {
+        this.eventRegFees = eventRegFees;
     }
 }
-
