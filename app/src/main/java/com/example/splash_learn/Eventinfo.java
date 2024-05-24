@@ -8,7 +8,7 @@ public class Eventinfo {
     String Clubname,EventName,EventPlace,EventRegFees,EventDate,OrganizedBy;
 
     /**
-     * This is the constructor of EventInfor class with these parameters..
+     * This is the constructor of EventInfo class with these parameters below..
      * @param clubname
      * @param eventName
      * @param eventPlace
