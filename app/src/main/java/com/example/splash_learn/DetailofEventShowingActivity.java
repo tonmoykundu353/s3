@@ -100,10 +100,13 @@
 
 package com.example.splash_learn;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -119,6 +122,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailofEventShowingActivity extends AppCompatActivity {
     EditText contestentname, contestentemail, ContactNo;
+
+    TextView toastshowingtextview;
     Button registerbtn;
 
     String User;
@@ -140,6 +145,9 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
         contestentemail = findViewById(R.id.contestent_email);
         registerbtn = findViewById(R.id.regbtn_for_contest);
 
+
+        toastshowingtextview=findViewById(R.id.toast_for_detailActivity);
+
         User = getIntent().getStringExtra("organizedBy");
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
@@ -152,13 +160,31 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
 
                 // Validation checks
                 if (!contestentemailobj.endsWith("@gmail.com")) {
-                    Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
-                    return;
+                    //Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
+                    toastshowingtextview.setText("Email must be a @gmail.com address");
+                    toastshowingtextview.setVisibility(View.VISIBLE); // Make the TextView visible
+
+                    // Delay hiding the TextView after 3 seconds (adjust the delay time as needed)
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toastshowingtextview.setVisibility(View.INVISIBLE); // Hide the TextView
+                        }
+                    }, 3000); // 3000 milliseconds = 3 seconds
                 }
 
                 if (ContactNoobj.length() != 11) {
-                    Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
-                    return;
+                    //Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
+                    toastshowingtextview.setText("Mobile number must be 11 digits");
+                    toastshowingtextview.setVisibility(View.VISIBLE); // Make the TextView visible
+
+                    // Delay hiding the TextView after 3 seconds (adjust the delay time as needed)
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            toastshowingtextview.setVisibility(View.INVISIBLE); // Hide the TextView
+                        }
+                    }, 3000);
                 }
 
 
@@ -174,6 +200,9 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
                 ref.setValue(contestentinfo);
 
                 Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(DetailofEventShowingActivity.this,home_activity.class);
+                startActivity(intent);
             }
         });
     }
