@@ -9,6 +9,7 @@ public class EventShowinginfo {
         this.eventname = eventname;
         this.eventRegFees = eventRegFees;
         this.eventSharedProperties = eventSharedProperties;
+
     }
 
     public EventSharedProperties getEventSharedProperties() {

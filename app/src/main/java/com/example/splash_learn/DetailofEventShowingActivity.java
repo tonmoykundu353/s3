@@ -190,8 +190,28 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
 
                    // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
 
+
+
+                // Validation checks
+                if (!contestentemailobj.endsWith("@gmail.com")) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (ContactNoobj.length() != 11) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
+
+                // Use Factory Design Pattern to create Contestentinfo instance
+                InfoFactory factory = new ConcreteInfoFactory();
+                Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
                     DatabaseReference ref=SuperSingleton.getSuperSingleton();
                     ref.child("Contestentinfo").child(User).child(contestentnameobj).setValue(contestentinfo);
+
 
                     Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
 
