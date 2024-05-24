@@ -59,17 +59,21 @@ public class signup_activity extends AppCompatActivity {
                 college_name = sign_up_college_name.getText().toString();
                 user_name = sign_up_name.getText().toString();
 
-                //
-                if(!email.contains("@gmail.com"))
-                {
+                if (!user_name.matches("[a-zA-Z]+")) {
+                    Toast.makeText(signup_activity.this, "Enter a valid name using only letters (a-z, A-Z)", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                     Toast.makeText(signup_activity.this, "Enter a valid gmail", Toast.LENGTH_SHORT).show();
-                }
-                else if(password.length()<6)
-                {
-                    Toast.makeText(signup_activity.this, "password less than 6 charecters", Toast.LENGTH_SHORT).show();
+                    return;
+                } if (password.length() < 6) {
+                    Toast.makeText(signup_activity.this, "Password less than 6 characters", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 //
-                else {
+
+
+
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("DETAILS").child(user_name);
                     UserInfo userInfo = new UserInfo(user_name, password, college_name, email);
 
@@ -78,7 +82,7 @@ public class signup_activity extends AppCompatActivity {
                     Intent intent = new Intent(signup_activity.this, login_activity.class);
                     startActivity(intent);
 
-                }
+
 
             }
         });
