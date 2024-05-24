@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.splash_learn.FlyweightDP.EventSharedProperties;
 import com.example.splash_learn.FlyweightDP.EventSharedPropertiesFactory;
 import com.example.splash_learn.FlyweightDP.EventShowinginfo;
+import com.example.splash_learn.SuperSingleton.SuperSingleton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,8 +45,9 @@ public class EventShowingActivity extends AppCompatActivity {
         eventShowingAdapter = new EventShowingAdapter(this, arrayList);
         listviewobj.setAdapter(eventShowingAdapter);
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Eventinfo");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Eventinfo");
+        DatabaseReference ref= SuperSingleton.getSuperSingleton();
+        ref.child("Eventinfo").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot eventSnapshot : snapshot.getChildren()) {

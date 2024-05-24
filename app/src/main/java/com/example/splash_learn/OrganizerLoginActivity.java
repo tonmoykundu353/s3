@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.splash_learn.SuperSingleton.SuperSingleton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -133,8 +134,10 @@ public class OrganizerLoginActivity extends AppCompatActivity {
                else
                 {
                     RegistrationInfo registrationInfo = new RegistrationInfo(University_name, University_roll, University_password);
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(University_roll);
-                    ref.setValue(registrationInfo);
+
+                    //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(University_roll);
+                    DatabaseReference ref= SuperSingleton.getSuperSingleton();
+                    ref.child("OrganizerRegistrationSection").child(University_roll).setValue(registrationInfo);
                    Toast.makeText(OrganizerLoginActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
 
 

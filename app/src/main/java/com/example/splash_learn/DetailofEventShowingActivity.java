@@ -99,11 +99,14 @@
 
 
 package com.example.splash_learn;
-
+import com.example.splash_learn.SuperSingleton.SuperSingleton;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -119,6 +122,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailofEventShowingActivity extends AppCompatActivity {
     EditText contestentname, contestentemail, ContactNo;
+
+    TextView toastshowingtextview;
     Button registerbtn;
 
     String User;
@@ -140,6 +145,9 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
         contestentemail = findViewById(R.id.contestent_email);
         registerbtn = findViewById(R.id.regbtn_for_contest);
 
+
+        toastshowingtextview=findViewById(R.id.toast_for_detailActivity);
+
         User = getIntent().getStringExtra("organizedBy");
 
         registerbtn.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +156,40 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
                 contestentnameobj = contestentname.getText().toString();
                 contestentemailobj = contestentemail.getText().toString();
                 ContactNoobj = ContactNo.getText().toString();
+                if (contestentnameobj.isEmpty() || contestentemailobj.isEmpty() || ContactNoobj.isEmpty()) {
+                    Toast.makeText(DetailofEventShowingActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return; // Prevent further execution
+                }else{
+
+
+                    if (!contestentemailobj.contains("@gmail.com")) {
+                        Toast.makeText(DetailofEventShowingActivity.this, "Email must be a @gmail.com address", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                     if (ContactNoobj.length() != 11) {
+                        Toast.makeText(DetailofEventShowingActivity.this, "Mobile number must be 11 digits", Toast.LENGTH_SHORT).show();
+                        return;
+
+
+                    }
+
+                }
+
+                // Validation checks
+
+
+
+
+
+                    // Use Factory Design Pattern to create Contestentinfo instance
+                    InfoFactory factory = new ConcreteInfoFactory();
+                    Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
+
+
+
+                   // DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
+
 
 
                 // Validation checks
@@ -167,13 +209,16 @@ public class DetailofEventShowingActivity extends AppCompatActivity {
                 // Use Factory Design Pattern to create Contestentinfo instance
                 InfoFactory factory = new ConcreteInfoFactory();
                 Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
+                    DatabaseReference ref=SuperSingleton.getSuperSingleton();
+                    ref.child("Contestentinfo").child(User).child(contestentnameobj).setValue(contestentinfo);
 
 
+                    Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
-                ref.setValue(contestentinfo);
+                    Intent intent=new Intent(DetailofEventShowingActivity.this,home_activity.class);
+                    startActivity(intent);
 
-                Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

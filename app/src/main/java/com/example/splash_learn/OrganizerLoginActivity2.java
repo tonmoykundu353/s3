@@ -92,34 +92,84 @@ public class OrganizerLoginActivity2 extends AppCompatActivity {
         universitySpinner2.setAdapter(adapter);
 
 
+//        Loginbtn2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String University_name = universitySpinner2.getSelectedItem().toString();
+//                String University_roll = organizer_university_rollobj2.getText().toString();
+//                String University_password = organizer_university_passwordobj2.getText().toString();
+//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(University_roll);
+//                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if(snapshot.exists()){
+//                            String uni_n=snapshot.child("uni_name").getValue(String.class);
+//                            String uni_pass=snapshot.child("uni_password").getValue(String.class);
+//                            String uni_roll=snapshot.child("uni_roll").getValue(String.class);
+//
+//                            // Check if university name, roll number, and password match
+//                            if(University_name.equals(uni_n) && University_roll.equals(uni_roll) && University_password.equals(uni_pass)){
+//                                Toast.makeText(OrganizerLoginActivity2.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
+////                                Intent intent = new Intent(OrganizerLoginActivity2.this, OrganizerActivity.class);
+////                                intent.putExtra("UserRoll", University_roll);
+////                                startActivity(intent);
+//
+//
+//
+//                                Intent intent = new Intent(OrganizerLoginActivity2.this, ChoiceBoxOrganizerActivity.class);
+//                                intent.putExtra("UserRoll", University_roll);
+//                                startActivity(intent);
+//
+//
+//                            } else {
+//                                Toast.makeText(OrganizerLoginActivity2.this, "Incorrect Credentials", Toast.LENGTH_SHORT).show();
+//                            }
+//                        } else {
+//                            Toast.makeText(OrganizerLoginActivity2.this, "User not found", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//            }
+//        });
         Loginbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Retrieve input values
                 String University_name = universitySpinner2.getSelectedItem().toString();
-                String University_roll = organizer_university_rollobj2.getText().toString();
-                String University_password = organizer_university_passwordobj2.getText().toString();
+                String University_roll = organizer_university_rollobj2.getText().toString().trim();
+                String University_password = organizer_university_passwordobj2.getText().toString().trim();
+
+                // Check if any input field is empty
+                if (University_name.isEmpty() || University_roll.isEmpty() || University_password.isEmpty()) {
+                    Toast.makeText(OrganizerLoginActivity2.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return; // Prevent further execution
+                }
+
+
+                // Proceed with login authentication
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(University_roll);
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()){
-                            String uni_n=snapshot.child("uni_name").getValue(String.class);
-                            String uni_pass=snapshot.child("uni_password").getValue(String.class);
-                            String uni_roll=snapshot.child("uni_roll").getValue(String.class);
+                            String uni_n = snapshot.child("uni_name").getValue(String.class);
+                            String uni_pass = snapshot.child("uni_password").getValue(String.class);
+                            String uni_roll = snapshot.child("uni_roll").getValue(String.class);
 
                             // Check if university name, roll number, and password match
                             if(University_name.equals(uni_n) && University_roll.equals(uni_roll) && University_password.equals(uni_pass)){
                                 Toast.makeText(OrganizerLoginActivity2.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intent(OrganizerLoginActivity2.this, OrganizerActivity.class);
-//                                intent.putExtra("UserRoll", University_roll);
-//                                startActivity(intent);
 
-
-
+                                // Proceed to next activity
                                 Intent intent = new Intent(OrganizerLoginActivity2.this, ChoiceBoxOrganizerActivity.class);
                                 intent.putExtra("UserRoll", University_roll);
                                 startActivity(intent);
-
 
                             } else {
                                 Toast.makeText(OrganizerLoginActivity2.this, "Incorrect Credentials", Toast.LENGTH_SHORT).show();
@@ -131,12 +181,12 @@ public class OrganizerLoginActivity2 extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        // Handle database error
                     }
                 });
-
             }
         });
+
 
 
 
