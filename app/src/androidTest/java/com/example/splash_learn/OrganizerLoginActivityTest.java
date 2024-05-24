@@ -16,13 +16,16 @@ public class OrganizerLoginActivityTest {
 
     @Test
     public void showbtn_check(){
-        String longComment = "12345";
+        String validRollNumber = "1234567";
         // Enter long comment
+        Espresso.onView(ViewMatchers.withId(R.id.id_enter_organizer_roll))
+                .perform(ViewActions.replaceText(validRollNumber));
+
         Espresso.onView(ViewMatchers.withId(R.id.id_enter_organizer_password)).perform(ViewActions.replaceText("12345"));
         Espresso.onView(ViewMatchers.withId(R.id.id_organizer_login_btn)).perform(ViewActions.click());
         // Check if the error message is displayed correctly
         Espresso.onView(ViewMatchers.withId(R.id.Organizert_login_toastshowing_textview))
-                .check(ViewAssertions.matches(ViewMatchers.withText( "Password less than 6 charecters")));
+                .check(ViewAssertions.matches(ViewMatchers.withText("Password must be graeter  than 6 charecters")));
 
 
     }

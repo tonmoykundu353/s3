@@ -63,3 +63,5 @@ public class EventShowingAdapter extends BaseAdapter {
         return convertView;
     }
 }
+
+//this is changed by Dipesh*******************************
