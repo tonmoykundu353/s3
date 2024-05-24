@@ -99,6 +99,7 @@
 
 package com.example.splash_learn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -115,6 +116,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.splash_learn.DP.ConcreteInfoFactory;
 import com.example.splash_learn.DP.InfoFactory;
+import com.example.splash_learn.SuperSingleton.SuperSingleton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -173,6 +175,24 @@ public class OrganizerActivity extends AppCompatActivity {
                 String event_date = eventdate.getText().toString();
                 String event_regFee=eventregFee.getText().toString();
                 //Eventinfo eventinfo = new Eventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);
+
+
+
+
+//                // Check if any input field is empty
+//                if (event_name.isEmpty() || club_name.isEmpty() || event_date.isEmpty() || event_regFee.isEmpty()) {
+//                    Toast.makeText(OrganizerActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+//                    return; // Prevent further execution
+//                }
+//
+//                // Check if event date is in the format DD/MM/YYYY
+//                if (!isValidDateFormat(event_date)) {
+//                    Toast.makeText(OrganizerActivity.this, "Please enter a valid date in the format DD/MM/YYYY", Toast.LENGTH_SHORT).show();
+//                    return; // Prevent further execution
+//                }
+
+
+
                 //**************************************Using Factory DP*************************************
                 //*******************************************************************************************
                 InfoFactory factory = new ConcreteInfoFactory();
@@ -184,6 +204,7 @@ public class OrganizerActivity extends AppCompatActivity {
 
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Eventinfo").child(event_name);
+               // DatabaseReference ref= SuperSingleton.getSuperSingleton().child("Eventinfo").child(event_name);
                 ref.setValue(eventinfo);
 
 
@@ -191,10 +212,21 @@ public class OrganizerActivity extends AppCompatActivity {
 //                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(UserRoll).child("ClubSection");
 //                ref2.setValue(eventinfo);
                 Toast.makeText(OrganizerActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(OrganizerActivity.this,home_activity.class);
+                startActivity(intent);
 
 
             }
+
+
+
+            // Function to validate date format DD/MM/YYYY
+//            private boolean isValidDateFormat(String date) {
+//                return date.matches("^\\d{2}/\\d{2}/\\d{4}$");
+//            }
         });
+        
+        
 
 
 
