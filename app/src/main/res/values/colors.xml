@@ -25,4 +25,7 @@
     <color name="gray">#f3f3f3</color>
     <color name="blue">#60c5d1</color>
 
+
+    <color name="colorAccent">#4885ed</color>
+
 </resources>

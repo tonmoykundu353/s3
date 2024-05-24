@@ -1,0 +1,1039 @@
+Index: app/src/main/java/com/example/splash_learn/DetailofEventShowingActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.splash_learn;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\n\r\npublic class DetailofEventShowingActivity extends AppCompatActivity {\r\n    EditText contestentname,contestentemail,contestentcollege;\r\n    Button registerbtn;\r\n\r\n\r\n    String User;\r\n\r\n\r\n\r\n    String contestentnameobj,contestentemailobj,contestentcollegeobj;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_detailof_event_showing);\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n\r\n\r\n        contestentcollege=findViewById(R.id.contestent_college);\r\n        contestentname=findViewById(R.id.contestent_name);\r\n        contestentemail=findViewById(R.id.contestent_email);\r\n        registerbtn=findViewById(R.id.regbtn_for_contest);\r\n        registerbtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                contestentnameobj=contestentname.getText().toString();\r\n                contestentemailobj=contestentemail.getText().toString();\r\n                contestentcollegeobj=contestentcollege.getText().toString();\r\n\r\n\r\n\r\n                User=getIntent().getStringExtra(\"organizedBy\");\r\n\r\n                Contestentinfo contestentinfo = new Contestentinfo(contestentnameobj, contestentemailobj,contestentcollegeobj);\r\n                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(\"Contestentinfo\").child(User).child(contestentnameobj);\r\n                ref.setValue(contestentinfo);\r\n\r\n\r\n\r\n//                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child(\"OrganizerRegistrationSection\").child(UserRoll).child(\"ClubSection\");\r\n//                ref2.setValue(eventinfo);\r\n                Toast.makeText(DetailofEventShowingActivity.this, \"User information is successfully added\", Toast.LENGTH_SHORT).show();\r\n\r\n\r\n\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/DetailofEventShowingActivity.java b/app/src/main/java/com/example/splash_learn/DetailofEventShowingActivity.java
+--- a/app/src/main/java/com/example/splash_learn/DetailofEventShowingActivity.java	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ b/app/src/main/java/com/example/splash_learn/DetailofEventShowingActivity.java	(date 1716012196477)
+@@ -1,3 +1,103 @@
++//package com.example.splash_learn;
++//
++//import android.os.Bundle;
++//import android.view.View;
++//import android.widget.Button;
++//import android.widget.EditText;
++//import android.widget.Toast;
++//
++//import androidx.activity.EdgeToEdge;
++//import androidx.appcompat.app.AppCompatActivity;
++//import androidx.core.graphics.Insets;
++//import androidx.core.view.ViewCompat;
++//import androidx.core.view.WindowInsetsCompat;
++//
++//
++//
++//import com.google.firebase.database.DatabaseReference;
++//import com.google.firebase.database.FirebaseDatabase;
++//
++//public class DetailofEventShowingActivity extends AppCompatActivity {
++//    EditText contestentname,contestentemail,ContactNo;
++//    Button registerbtn;
++//
++//
++//    String User;
++//
++//
++//
++//    String contestentnameobj,contestentemailobj,ContactNoobj;
++//
++//    @Override
++//    protected void onCreate(Bundle savedInstanceState) {
++//        super.onCreate(savedInstanceState);
++//        EdgeToEdge.enable(this);
++//        setContentView(R.layout.activity_detailof_event_showing);
++//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++//            return insets;
++//        });
++//
++//
++//        ContactNo=findViewById(R.id.contestent_college);
++//        contestentname=findViewById(R.id.contestent_name);
++//        contestentemail=findViewById(R.id.contestent_email);
++//        registerbtn=findViewById(R.id.regbtn_for_contest);
++//        registerbtn.setOnClickListener(new View.OnClickListener() {
++//            @Override
++//            public void onClick(View v) {
++//                contestentnameobj=contestentname.getText().toString();
++//                contestentemailobj=contestentemail.getText().toString();
++//                ContactNoobj=ContactNo.getText().toString();
++//
++//
++//
++//                User=getIntent().getStringExtra("organizedBy");
++//
++//
++//
++//
++//
++//
++//
++//                //Using Factory Design Pattern***********************************************************************
++//                //*************************************************************************************************
++//                Contestentinfo contestentinfo = new Contestentinfo(contestentnameobj, contestentemailobj,ContactNoobj);
++//
++//
++//
++//
++//
++//
++//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
++//                ref.setValue(contestentinfo);
++//
++//
++//
++////                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(UserRoll).child("ClubSection");
++////                ref2.setValue(eventinfo);
++//                Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
++//
++//
++//
++//            }
++//        });
++//    }
++//}
++
++
++
++
++
++
++
++
++
++
++
++
++
+ package com.example.splash_learn;
+ 
+ import android.os.Bundle;
+@@ -12,19 +112,17 @@
+ import androidx.core.view.ViewCompat;
+ import androidx.core.view.WindowInsetsCompat;
+ 
++import com.example.splash_learn.DP.ConcreteInfoFactory;
++import com.example.splash_learn.DP.InfoFactory;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
+ 
+ public class DetailofEventShowingActivity extends AppCompatActivity {
+-    EditText contestentname,contestentemail,contestentcollege;
++    EditText contestentname, contestentemail, ContactNo;
+     Button registerbtn;
+ 
+-
+     String User;
+-
+-
+-
+-    String contestentnameobj,contestentemailobj,contestentcollegeobj;
++    String contestentnameobj, contestentemailobj, ContactNoobj;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -37,35 +135,29 @@
+             return insets;
+         });
+ 
+-
+-        contestentcollege=findViewById(R.id.contestent_college);
+-        contestentname=findViewById(R.id.contestent_name);
+-        contestentemail=findViewById(R.id.contestent_email);
+-        registerbtn=findViewById(R.id.regbtn_for_contest);
++        ContactNo = findViewById(R.id.contestent_college);
++        contestentname = findViewById(R.id.contestent_name);
++        contestentemail = findViewById(R.id.contestent_email);
++        registerbtn = findViewById(R.id.regbtn_for_contest);
++
++        User = getIntent().getStringExtra("organizedBy");
++
+         registerbtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                contestentnameobj=contestentname.getText().toString();
+-                contestentemailobj=contestentemail.getText().toString();
+-                contestentcollegeobj=contestentcollege.getText().toString();
+-
++                contestentnameobj = contestentname.getText().toString();
++                contestentemailobj = contestentemail.getText().toString();
++                ContactNoobj = ContactNo.getText().toString();
+ 
++                // Use Factory Design Pattern to create Contestentinfo instance
++                InfoFactory factory = new ConcreteInfoFactory();
++                Contestentinfo contestentinfo = factory.createContestentinfo(contestentnameobj, contestentemailobj, ContactNoobj);
+ 
+-                User=getIntent().getStringExtra("organizedBy");
+-
+-                Contestentinfo contestentinfo = new Contestentinfo(contestentnameobj, contestentemailobj,contestentcollegeobj);
+                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(User).child(contestentnameobj);
+                 ref.setValue(contestentinfo);
+ 
+-
+-
+-//                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(UserRoll).child("ClubSection");
+-//                ref2.setValue(eventinfo);
+                 Toast.makeText(DetailofEventShowingActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
+-
+-
+-
+             }
+         });
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/main/java/com/example/splash_learn/OrganizerLoginActivity2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.splash_learn;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.text.method.HideReturnsTransformationMethod;\r\nimport android.text.method.PasswordTransformationMethod;\r\nimport android.view.View;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.Button;\r\nimport android.widget.CheckBox;\r\nimport android.widget.CompoundButton;\r\nimport android.widget.EditText;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class OrganizerLoginActivity2 extends AppCompatActivity {\r\n    EditText organizer_university_rollobj2, organizer_university_passwordobj2;\r\n\r\n    CheckBox checkBox;\r\n    Button Loginbtn2,organizerregistration2;\r\n    Spinner universitySpinner2;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_organizer_login2);\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n\r\n\r\n\r\n\r\n        universitySpinner2 = findViewById(R.id.id_enter_organizer_university_spinner2);\r\n        organizer_university_rollobj2 = findViewById(R.id.id_enter_organizer_roll2);\r\n        organizer_university_passwordobj2 = findViewById(R.id.id_enter_organizer_password2);\r\n        Loginbtn2 = findViewById(R.id.id_organizer_login_btn2);\r\n        organizerregistration2=findViewById(R.id.id_organizer_registration2);\r\n\r\n        checkBox = findViewById(R.id.organizer_checkbox_button2);\r\n\r\n        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {\r\n            @Override\r\n            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {\r\n                if(isChecked){\r\n                    // For show password\r\n                    organizer_university_passwordobj2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());\r\n                }\r\n                else\r\n                {\r\n                    // For hide password\r\n                    organizer_university_passwordobj2.setTransformationMethod(PasswordTransformationMethod.getInstance());\r\n                }\r\n            }\r\n\r\n        });\r\n\r\n        // Define your list of universities\r\n        List<String> universityList = new ArrayList<>();\r\n        universityList.add(\"KUET\");\r\n        universityList.add(\"BUET\");\r\n        universityList.add(\"CUET\");\r\n        universityList.add(\"RUET\");\r\n        // Add more universities as needed\r\n\r\n        // Create an ArrayAdapter using the university list\r\n        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universityList);\r\n\r\n        // Specify the layout to use when the list of choices appears\r\n        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n\r\n        // Apply the adapter to the spinner\r\n        universitySpinner2.setAdapter(adapter);\r\n\r\n\r\n        Loginbtn2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                String University_name = universitySpinner2.getSelectedItem().toString();\r\n                String University_roll = organizer_university_rollobj2.getText().toString();\r\n                String University_password = organizer_university_passwordobj2.getText().toString();\r\n                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(\"OrganizerRegistrationSection\").child(University_roll);\r\n                ref.addListenerForSingleValueEvent(new ValueEventListener() {\r\n                    @Override\r\n                    public void onDataChange(@NonNull DataSnapshot snapshot) {\r\n                        if(snapshot.exists()){\r\n                            String uni_n=snapshot.child(\"uni_name\").getValue(String.class);\r\n                            String uni_pass=snapshot.child(\"uni_password\").getValue(String.class);\r\n                            String uni_roll=snapshot.child(\"uni_roll\").getValue(String.class);\r\n\r\n                            // Check if university name, roll number, and password match\r\n                            if(University_name.equals(uni_n) && University_roll.equals(uni_roll) && University_password.equals(uni_pass)){\r\n                                Toast.makeText(OrganizerLoginActivity2.this, \"Successfully Logged in\", Toast.LENGTH_SHORT).show();\r\n                                Intent intent = new Intent(OrganizerLoginActivity2.this, OrganizerActivity.class);\r\n                                intent.putExtra(\"UserRoll\", University_roll);\r\n                                startActivity(intent);\r\n                            } else {\r\n                                Toast.makeText(OrganizerLoginActivity2.this, \"Incorrect Credentials\", Toast.LENGTH_SHORT).show();\r\n                            }\r\n                        } else {\r\n                            Toast.makeText(OrganizerLoginActivity2.this, \"User not found\", Toast.LENGTH_SHORT).show();\r\n                        }\r\n                    }\r\n\r\n                    @Override\r\n                    public void onCancelled(@NonNull DatabaseError error) {\r\n\r\n                    }\r\n                });\r\n\r\n            }\r\n        });\r\n\r\n\r\n\r\n        organizerregistration2.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent=new Intent(OrganizerLoginActivity2.this, OrganizerLoginActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/OrganizerLoginActivity2.java b/app/src/main/java/com/example/splash_learn/OrganizerLoginActivity2.java
+--- a/app/src/main/java/com/example/splash_learn/OrganizerLoginActivity2.java	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ b/app/src/main/java/com/example/splash_learn/OrganizerLoginActivity2.java	(date 1715945089322)
+@@ -110,9 +110,17 @@
+                             // Check if university name, roll number, and password match
+                             if(University_name.equals(uni_n) && University_roll.equals(uni_roll) && University_password.equals(uni_pass)){
+                                 Toast.makeText(OrganizerLoginActivity2.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
+-                                Intent intent = new Intent(OrganizerLoginActivity2.this, OrganizerActivity.class);
++//                                Intent intent = new Intent(OrganizerLoginActivity2.this, OrganizerActivity.class);
++//                                intent.putExtra("UserRoll", University_roll);
++//                                startActivity(intent);
++
++
++
++                                Intent intent = new Intent(OrganizerLoginActivity2.this, ChoiceBoxOrganizerActivity.class);
+                                 intent.putExtra("UserRoll", University_roll);
+                                 startActivity(intent);
++
++
+                             } else {
+                                 Toast.makeText(OrganizerLoginActivity2.this, "Incorrect Credentials", Toast.LENGTH_SHORT).show();
+                             }
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ /dev/null	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: app/src/main/java/com/example/splash_learn/Contestentinfo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.splash_learn;\r\n\r\npublic class Contestentinfo {\r\n    String name,email,collegename;\r\n\r\n    public Contestentinfo(String name, String email, String collegename) {\r\n        this.name = name;\r\n        this.email = email;\r\n        this.collegename = collegename;\r\n    }\r\n\r\n    public Contestentinfo() {\r\n\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setEmail(String email) {\r\n        this.email = email;\r\n    }\r\n\r\n    public String getCollegename() {\r\n        return collegename;\r\n    }\r\n\r\n    public void setCollegename(String collegename) {\r\n        this.collegename = collegename;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/Contestentinfo.java b/app/src/main/java/com/example/splash_learn/Contestentinfo.java
+--- a/app/src/main/java/com/example/splash_learn/Contestentinfo.java	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ b/app/src/main/java/com/example/splash_learn/Contestentinfo.java	(date 1715948072108)
+@@ -1,12 +1,65 @@
+ package com.example.splash_learn;
++//
++//public class Contestentinfo {
++//    String name,email,collegename;
++//
++//    public Contestentinfo(String name, String email, String collegename) {
++//        this.name = name;
++//        this.email = email;
++//        this.collegename = collegename;
++//    }
++//
++//    public Contestentinfo() {
++//
++//    }
++//
++//    public String getName() {
++//        return name;
++//    }
++//
++//    public void setName(String name) {
++//        this.name = name;
++//    }
++//
++//    public String getEmail() {
++//        return email;
++//    }
++//
++//    public void setEmail(String email) {
++//        this.email = email;
++//    }
++//
++//    public String getCollegename() {
++//        return collegename;
++//    }
++//
++//    public void setCollegename(String collegename) {
++//        this.collegename = collegename;
++//    }
++//}
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+ public class Contestentinfo {
+-    String name,email,collegename;
++    String name,email,ContactNo;
+ 
+-    public Contestentinfo(String name, String email, String collegename) {
++    public Contestentinfo(String name, String email, String ContactNo) {
+         this.name = name;
+         this.email = email;
+-        this.collegename = collegename;
++        this.ContactNo = ContactNo;
+     }
+ 
+     public Contestentinfo() {
+@@ -29,11 +82,11 @@
+         this.email = email;
+     }
+ 
+-    public String getCollegename() {
+-        return collegename;
++    public String getContactNo() {
++        return ContactNo;
+     }
+ 
+-    public void setCollegename(String collegename) {
+-        this.collegename = collegename;
++    public void setContactNo(String ContactNo) {
++        this.ContactNo = ContactNo;
+     }
+ }
+Index: app/src/main/java/com/example/splash_learn/RegStudAtEventAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/RegStudAtEventAdapter.java b/app/src/main/java/com/example/splash_learn/RegStudAtEventAdapter.java
+new file mode 100644
+--- /dev/null	(date 1715951214276)
++++ b/app/src/main/java/com/example/splash_learn/RegStudAtEventAdapter.java	(date 1715951214276)
+@@ -0,0 +1,57 @@
++package com.example.splash_learn;
++
++import android.content.Context;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.BaseAdapter;
++import android.widget.TextView;
++
++import java.util.ArrayList;
++
++public class RegStudAtEventAdapter extends BaseAdapter {
++    private Context context;
++    private ArrayList<RegStudAtEventInfo> data;
++
++    // Corrected constructor
++    public RegStudAtEventAdapter(Context context, ArrayList<RegStudAtEventInfo> arrayList) {
++        this.context = context;
++        this.data = arrayList;
++    }
++
++    @Override
++    public int getCount() {
++        return data.size();
++    }
++
++    @Override
++    public Object getItem(int position) {
++        return data.get(position);
++    }
++
++    @Override
++    public long getItemId(int position) {
++        return position;
++    }
++
++    @Override
++    public View getView(int position, View convertView, ViewGroup parent) {
++        // Inflate your custom view and return it here
++        // For example:
++        if (convertView == null) {
++            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_for_showing_reg_atud_at_event,parent,false);
++        }
++
++       RegStudAtEventInfo regStudAtEventInfodata=data.get(position);
++        TextView nametetxview=convertView.findViewById(R.id.stud_name);
++        TextView emailtextview=convertView.findViewById(R.id.stud_email);
++        TextView contactview=convertView.findViewById(R.id.stud_contact);
++
++
++        nametetxview.setText(regStudAtEventInfodata.getName());
++        emailtextview.setText(regStudAtEventInfodata.getEmail());
++        contactview.setText(regStudAtEventInfodata.getContactNo());
++
++        return convertView;
++    }
++}
+Index: app/src/main/java/com/example/splash_learn/ChoiceBoxOrganizerActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/ChoiceBoxOrganizerActivity.java b/app/src/main/java/com/example/splash_learn/ChoiceBoxOrganizerActivity.java
+new file mode 100644
+--- /dev/null	(date 1715951792995)
++++ b/app/src/main/java/com/example/splash_learn/ChoiceBoxOrganizerActivity.java	(date 1715951792995)
+@@ -0,0 +1,55 @@
++package com.example.splash_learn;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
++
++import androidx.activity.EdgeToEdge;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++
++public class ChoiceBoxOrganizerActivity extends AppCompatActivity {
++
++    Button gotoorganizeeventbtn,gotoshowStudentbtn;
++    String UserRoll;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_choice_box_organizer);
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++            return insets;
++        });
++
++
++
++        UserRoll=getIntent().getStringExtra("UserRoll");
++        gotoorganizeeventbtn=findViewById(R.id.goto_organize_event_btn);
++        gotoshowStudentbtn=findViewById(R.id.goto_show_student_list);
++
++        gotoorganizeeventbtn.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent=new Intent(ChoiceBoxOrganizerActivity.this, OrganizerActivity.class);
++                intent.putExtra("UserRoll",UserRoll);
++                startActivity(intent);
++            }
++        });
++
++
++        gotoshowStudentbtn.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent=new Intent(ChoiceBoxOrganizerActivity.this, RegisteredStudentEtEventActivity.class);
++                intent.putExtra("UserRoll",UserRoll);
++                startActivity(intent);
++            }
++        });
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/list_item_for_showing_reg_atud_at_event.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/list_item_for_showing_reg_atud_at_event.xml b/app/src/main/res/layout/list_item_for_showing_reg_atud_at_event.xml
+new file mode 100644
+--- /dev/null	(date 1715951214266)
++++ b/app/src/main/res/layout/list_item_for_showing_reg_atud_at_event.xml	(date 1715951214266)
+@@ -0,0 +1,80 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/list_of_reg_stud_at_event"
++    android:layout_width="match_parent"
++    android:layout_height="280dp">
++
++    <TextView
++        android:id="@+id/textView7"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.175"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.21" />
++
++    <TextView
++        android:id="@+id/stud_name"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.639"
++        app:layout_constraintStart_toEndOf="@+id/textView7"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.21" />
++
++    <TextView
++        android:id="@+id/textView11"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.155"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.501" />
++
++    <TextView
++        android:id="@+id/stud_email"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.763"
++        app:layout_constraintStart_toEndOf="@+id/textView11"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.429" />
++
++    <TextView
++        android:id="@+id/textView15"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.175"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.712" />
++
++    <TextView
++        android:id="@+id/stud_contact"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="TextView"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.639"
++        app:layout_constraintStart_toEndOf="@+id/textView15"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.712" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_registered_student_et_event.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_registered_student_et_event.xml b/app/src/main/res/layout/activity_registered_student_et_event.xml
+new file mode 100644
+--- /dev/null	(date 1715947541352)
++++ b/app/src/main/res/layout/activity_registered_student_et_event.xml	(date 1715947541352)
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".RegisteredStudentEtEventActivity">
++
++    <ListView
++        android:id="@+id/Reg_stud_at_event_listview_id"
++        android:layout_width="409dp"
++        android:layout_height="729dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1715942970664)
++++ b/.idea/vcs.xml	(date 1715942970664)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_choice_box_organizer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_choice_box_organizer.xml b/app/src/main/res/layout/activity_choice_box_organizer.xml
+new file mode 100644
+--- /dev/null	(date 1715944837096)
++++ b/app/src/main/res/layout/activity_choice_box_organizer.xml	(date 1715944837096)
+@@ -0,0 +1,30 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ChoiceBoxOrganizerActivity">
++
++    <Button
++        android:id="@+id/goto_organize_event_btn"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Go to Organize  Event"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.184" />
++
++    <Button
++        android:id="@+id/goto_show_student_list"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Go to  see the Student List"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"Admission360\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Splash_learn\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".DetailofEventShowingActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".EventShowingActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".OrganizerLoginActivity2\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".OrganizerLoginActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".OrganizerActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".fetch_links\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".New_link\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".show_writers\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".scinece_books\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".profile_update\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".links_webview\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".university_webview\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".contact_us\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Activity2\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".home_activity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".signup_activity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".slider_activity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".onboard_sliding\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".login_activity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".splash_activity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ b/app/src/main/AndroidManifest.xml	(date 1715947346964)
+@@ -15,6 +15,12 @@
+         android:theme="@style/Theme.Splash_learn"
+         tools:targetApi="31">
+         <activity
++            android:name=".RegisteredStudentEtEventActivity"
++            android:exported="false" />
++        <activity
++            android:name=".ChoiceBoxOrganizerActivity"
++            android:exported="false" />
++        <activity
+             android:name=".DetailofEventShowingActivity"
+             android:exported="false" />
+         <activity
+Index: app/src/main/java/com/example/splash_learn/OrganizerActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.splash_learn;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class OrganizerActivity extends AppCompatActivity {\r\n    EditText eventname,clubname,eventdate,eventregFee;\r\n    Spinner eventplace;\r\n    Button addbtnobj;\r\n    String UserRoll;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_organizer);\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n         UserRoll=getIntent().getStringExtra(\"UserRoll\");\r\n\r\n        eventplace = findViewById(R.id.id_enter_Event_Place);\r\n\r\n        // Define your list of universities\r\n        List<String> universityList = new ArrayList<>();\r\n        universityList.add(\"KUET\");\r\n        universityList.add(\"VUET\");\r\n        universityList.add(\"CUER\");\r\n        universityList.add(\"RUET\");\r\n        // Add more universities as needed\r\n\r\n        // Create an ArrayAdapter using the university list\r\n        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universityList);\r\n\r\n        // Specify the layout to use when the list of choices appears\r\n        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);\r\n\r\n        // Apply the adapter to the spinner\r\n        eventplace.setAdapter(adapter);\r\n\r\n\r\n        eventname=findViewById(R.id.id_enter_event_name);\r\n        clubname=findViewById(R.id.id_enter_organizing_club);\r\n        eventdate=findViewById(R.id.id_enter_event_date);\r\n        eventregFee=findViewById(R.id.id_enter_event_regFee);\r\n        addbtnobj=findViewById(R.id.addbtn);\r\n        addbtnobj.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                String event_place = eventplace.getSelectedItem().toString();\r\n                String event_name = eventname.getText().toString();\r\n                String club_name = clubname.getText().toString();\r\n                String event_date = eventdate.getText().toString();\r\n                String event_regFee=eventregFee.getText().toString();\r\n               Eventinfo eventinfo = new Eventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);\r\n                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(\"Eventinfo\").child(event_name);\r\n                ref.setValue(eventinfo);\r\n\r\n\r\n\r\n//                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child(\"OrganizerRegistrationSection\").child(UserRoll).child(\"ClubSection\");\r\n//                ref2.setValue(eventinfo);\r\n                Toast.makeText(OrganizerActivity.this, \"User information is successfully added\", Toast.LENGTH_SHORT).show();\r\n\r\n\r\n            }\r\n        });\r\n\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/OrganizerActivity.java b/app/src/main/java/com/example/splash_learn/OrganizerActivity.java
+--- a/app/src/main/java/com/example/splash_learn/OrganizerActivity.java	(revision c94af56f53ad98679619931cf4f7911d60c6f498)
++++ b/app/src/main/java/com/example/splash_learn/OrganizerActivity.java	(date 1716013175022)
+@@ -1,3 +1,102 @@
++//package com.example.splash_learn;
++//
++//import android.os.Bundle;
++//import android.view.View;
++//import android.widget.ArrayAdapter;
++//import android.widget.Button;
++//import android.widget.EditText;
++//import android.widget.Spinner;
++//import android.widget.Toast;
++//
++//import androidx.activity.EdgeToEdge;
++//import androidx.appcompat.app.AppCompatActivity;
++//import androidx.core.graphics.Insets;
++//import androidx.core.view.ViewCompat;
++//import androidx.core.view.WindowInsetsCompat;
++//
++//import com.google.firebase.database.DatabaseReference;
++//import com.google.firebase.database.FirebaseDatabase;
++//
++//import java.util.ArrayList;
++//import java.util.List;
++//
++//public class OrganizerActivity extends AppCompatActivity {
++//    EditText eventname,clubname,eventdate,eventregFee;
++//    Spinner eventplace;
++//    Button addbtnobj;
++//    String UserRoll;
++//
++//    @Override
++//    protected void onCreate(Bundle savedInstanceState) {
++//        super.onCreate(savedInstanceState);
++//        EdgeToEdge.enable(this);
++//        setContentView(R.layout.activity_organizer);
++//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++//            return insets;
++//        });
++//         UserRoll=getIntent().getStringExtra("UserRoll");
++//
++//        eventplace = findViewById(R.id.id_enter_Event_Place);
++//
++//        // Define your list of universities
++//        List<String> universityList = new ArrayList<>();
++//        universityList.add("KUET");
++//        universityList.add("VUET");
++//        universityList.add("CUER");
++//        universityList.add("RUET");
++//        // Add more universities as needed
++//
++//        // Create an ArrayAdapter using the university list
++//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, universityList);
++//
++//        // Specify the layout to use when the list of choices appears
++//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
++//
++//        // Apply the adapter to the spinner
++//        eventplace.setAdapter(adapter);
++//
++//
++//        eventname=findViewById(R.id.id_enter_event_name);
++//        clubname=findViewById(R.id.id_enter_organizing_club);
++//        eventdate=findViewById(R.id.id_enter_event_date);
++//        eventregFee=findViewById(R.id.id_enter_event_regFee);
++//        addbtnobj=findViewById(R.id.addbtn);
++//        addbtnobj.setOnClickListener(new View.OnClickListener() {
++//            @Override
++//            public void onClick(View v) {
++//                String event_place = eventplace.getSelectedItem().toString();
++//                String event_name = eventname.getText().toString();
++//                String club_name = clubname.getText().toString();
++//                String event_date = eventdate.getText().toString();
++//                String event_regFee=eventregFee.getText().toString();
++//               Eventinfo eventinfo = new Eventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);
++//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Eventinfo").child(event_name);
++//                ref.setValue(eventinfo);
++//
++//
++//
++////                DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("OrganizerRegistrationSection").child(UserRoll).child("ClubSection");
++////                ref2.setValue(eventinfo);
++//                Toast.makeText(OrganizerActivity.this, "User information is successfully added", Toast.LENGTH_SHORT).show();
++//
++//
++//            }
++//        });
++//
++//
++//
++//
++//    }
++//}
++
++
++
++
++
++
++
+ package com.example.splash_learn;
+ 
+ import android.os.Bundle;
+@@ -14,6 +113,8 @@
+ import androidx.core.view.ViewCompat;
+ import androidx.core.view.WindowInsetsCompat;
+ 
++import com.example.splash_learn.DP.ConcreteInfoFactory;
++import com.example.splash_learn.DP.InfoFactory;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
+ 
+@@ -36,15 +137,15 @@
+             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+             return insets;
+         });
+-         UserRoll=getIntent().getStringExtra("UserRoll");
++        UserRoll=getIntent().getStringExtra("UserRoll");
+ 
+         eventplace = findViewById(R.id.id_enter_Event_Place);
+ 
+         // Define your list of universities
+         List<String> universityList = new ArrayList<>();
+         universityList.add("KUET");
+-        universityList.add("VUET");
+-        universityList.add("CUER");
++        universityList.add("BUET");
++        universityList.add("CUET");
+         universityList.add("RUET");
+         // Add more universities as needed
+ 
+@@ -71,7 +172,17 @@
+                 String club_name = clubname.getText().toString();
+                 String event_date = eventdate.getText().toString();
+                 String event_regFee=eventregFee.getText().toString();
+-               Eventinfo eventinfo = new Eventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);
++                //Eventinfo eventinfo = new Eventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);
++                //**************************************Using Factory DP*************************************
++                //*******************************************************************************************
++                InfoFactory factory = new ConcreteInfoFactory();
++                Eventinfo eventinfo = factory.createEventinfo(club_name, event_name, event_place,event_regFee,event_date,UserRoll);
++
++
++
++
++
++
+                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Eventinfo").child(event_name);
+                 ref.setValue(eventinfo);
+ 
+@@ -89,4 +200,7 @@
+ 
+ 
+     }
+-}
+\ No newline at end of file
++}
++
++
++
+Index: app/src/main/java/com/example/splash_learn/DP/ConcreteInfoFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/DP/ConcreteInfoFactory.java b/app/src/main/java/com/example/splash_learn/DP/ConcreteInfoFactory.java
+new file mode 100644
+--- /dev/null	(date 1716013316623)
++++ b/app/src/main/java/com/example/splash_learn/DP/ConcreteInfoFactory.java	(date 1716013316623)
+@@ -0,0 +1,26 @@
++package com.example.splash_learn.DP;
++
++import com.example.splash_learn.Contestentinfo;
++import com.example.splash_learn.Eventinfo;
++import com.example.splash_learn.RegStudAtEventInfo;
++
++// Concrete factory implementation
++public class ConcreteInfoFactory implements InfoFactory {
++    @Override
++    public Eventinfo createEventinfo(String clubname, String eventName, String eventPlace, String eventRegFees, String eventDate, String organizedBy) {
++        return new Eventinfo(clubname, eventName, eventPlace, eventRegFees, eventDate, organizedBy);
++    }
++
++    @Override
++    public Contestentinfo createContestentinfo(String name, String email, String ContactNo) {
++        return new Contestentinfo(name, email, ContactNo);
++    }
++
++//    @Override
++//    public RegStudAtEventInfo createRegStudAtEventInfo(String contactNo, String email, String name) {
++//        return new RegStudAtEventInfo(contactNo, email, name);
++//    }
++
++
++
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/splash_learn/DP/InfoFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/DP/InfoFactory.java b/app/src/main/java/com/example/splash_learn/DP/InfoFactory.java
+new file mode 100644
+--- /dev/null	(date 1716013175040)
++++ b/app/src/main/java/com/example/splash_learn/DP/InfoFactory.java	(date 1716013175040)
+@@ -0,0 +1,35 @@
++package com.example.splash_learn.DP;
++
++import com.example.splash_learn.Eventinfo;
++import com.example.splash_learn.Contestentinfo;
++import com.example.splash_learn.RegStudAtEventInfo;
++
++// Define an interface for the factory
++// Factory interface
++public interface InfoFactory {
++    Eventinfo createEventinfo(String clubname, String eventName, String eventPlace, String eventRegFees, String eventDate, String organizedBy);
++
++    Contestentinfo createContestentinfo(String name, String email, String ContactNo);
++
++    //RegStudAtEventInfo createRegStudAtEventInfo(String contactNo, String email, String name);
++}
++
++
++// Usage
++//public class FactoryPatternExample {
++//    public static void main(String[] args) {
++//        // Create factory
++//        InfoFactory factory = new ConcreteInfoFactory();
++//
++//        // Create instances using factory
++//        Eventinfo eventinfo = factory.createEventinfo("Club A", "Event A", "Place A", "$10", "2024-05-20", "User A");
++//        Contestentinfo contestantinfo = factory.createContestantinfo("John Doe", "john@example.com", "1234567890");
++//        RegStudAtEventInfo regStudAtEventInfo = factory.createRegStudAtEventInfo("1234567890", "jane@example.com", "Jane Doe");
++//
++//        // Use the created instances
++//        System.out.println(eventinfo.getEventName());
++//        System.out.println(contestantinfo.getName());
++//        System.out.println(regStudAtEventInfo.getEmail());
++//    }
++//}
++
+Index: app/src/main/java/com/example/splash_learn/RegStudAtEventInfo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/RegStudAtEventInfo.java b/app/src/main/java/com/example/splash_learn/RegStudAtEventInfo.java
+new file mode 100644
+--- /dev/null	(date 1715948874677)
++++ b/app/src/main/java/com/example/splash_learn/RegStudAtEventInfo.java	(date 1715948874677)
+@@ -0,0 +1,39 @@
++package com.example.splash_learn;
++
++public class RegStudAtEventInfo {
++    String contactNo,email,name;
++
++    public RegStudAtEventInfo(String contactNo, String email, String name) {
++        this.contactNo = contactNo;
++        this.email = email;
++        this.name = name;
++    }
++
++    public RegStudAtEventInfo() {
++
++    }
++
++    public String getContactNo() {
++        return contactNo;
++    }
++
++    public void setContactNo(String contactNo) {
++        this.contactNo = contactNo;
++    }
++
++    public String getEmail() {
++        return email;
++    }
++
++    public void setEmail(String email) {
++        this.email = email;
++    }
++
++    public String getName() {
++        return name;
++    }
++
++    public void setName(String name) {
++        this.name = name;
++    }
++}
+Index: app/src/main/java/com/example/splash_learn/RegisteredStudentEtEventActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/splash_learn/RegisteredStudentEtEventActivity.java b/app/src/main/java/com/example/splash_learn/RegisteredStudentEtEventActivity.java
+new file mode 100644
+--- /dev/null	(date 1715951962644)
++++ b/app/src/main/java/com/example/splash_learn/RegisteredStudentEtEventActivity.java	(date 1715951962644)
+@@ -0,0 +1,70 @@
++package com.example.splash_learn;
++
++import android.os.Bundle;
++import android.widget.ListView;
++
++import androidx.activity.EdgeToEdge;
++import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.core.graphics.Insets;
++import androidx.core.view.ViewCompat;
++import androidx.core.view.WindowInsetsCompat;
++
++import com.google.firebase.database.DataSnapshot;
++import com.google.firebase.database.DatabaseError;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.ValueEventListener;
++
++import java.util.ArrayList;
++
++public class RegisteredStudentEtEventActivity extends AppCompatActivity {
++    ListView listView;
++    RegStudAtEventAdapter regStudAtEventAdapter;
++    ArrayList<RegStudAtEventInfo> arrayList;
++
++    String UserRoll;
++
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        EdgeToEdge.enable(this);
++        setContentView(R.layout.activity_registered_student_et_event);
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
++            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
++            return insets;
++        });
++
++
++
++        UserRoll=getIntent().getStringExtra("UserRoll");
++        arrayList=new ArrayList<>();
++        listView=findViewById(R.id.Reg_stud_at_event_listview_id);
++        regStudAtEventAdapter=new RegStudAtEventAdapter(this,arrayList);
++        listView.setAdapter(regStudAtEventAdapter);
++
++        DatabaseReference root= FirebaseDatabase.getInstance().getReference().child("Contestentinfo").child(UserRoll);
++        root.addValueEventListener(new ValueEventListener() {
++            @Override
++            public void onDataChange(@NonNull DataSnapshot snapshot) {
++                arrayList.clear();
++                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
++                    RegStudAtEventInfo registrationInfo=dataSnapshot.getValue(RegStudAtEventInfo.class);
++                    if(registrationInfo!=null){
++                        arrayList.add(registrationInfo);
++                    }
++                }
++                regStudAtEventAdapter.notifyDataSetChanged();
++
++            }
++
++            @Override
++            public void onCancelled(@NonNull DatabaseError error) {
++
++            }
++        });
++
++    }
++}
+\ No newline at end of file

@@ -48,6 +48,8 @@ public class scinece_books extends AppCompatActivity {
         writers.clear();
 
 
+
+
         extract();
 
     }

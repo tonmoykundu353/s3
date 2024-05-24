@@ -3,9 +3,11 @@ package com.example.splash_learn;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,13 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.SQLOutput;
 
@@ -55,6 +64,50 @@ public class home_fragment extends Fragment {
 // Start the animation
         mainGrid.startLayoutAnimation();
         //
+
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = databaseReference.child("DETAILS").child(login_activity.log_name).child("cap");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot event : snapshot.getChildren()){
+                    String s = event.getValue().toString();
+                    if(!s.isEmpty()) {
+                        vars.cap.add(s);
+                        Log.d("trr", s);
+                        //Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+        databaseReference1 = databaseReference1.child("DETAILS").child(login_activity.log_name).child("url");
+        databaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot event : snapshot.getChildren()){
+                    String s = event.getValue().toString();
+                    if(!s.isEmpty()) {
+                        vars.url_list.add(s);
+                        Log.d("trr", s);
+                        //Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
          return view;
 
 

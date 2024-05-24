@@ -15,6 +15,33 @@
         android:theme="@style/Theme.Splash_learn"
         tools:targetApi="31">
         <activity
+            android:name=".RegisteredStudentEtEventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChoiceBoxOrganizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailofEventShowingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventShowingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrganizerLoginActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".OrganizerLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrganizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fetch_links"
+            android:exported="false" />
+        <activity
+            android:name=".New_link"
+            android:exported="false" />
+        <activity
             android:name=".show_writers"
             android:exported="false" />
         <activity

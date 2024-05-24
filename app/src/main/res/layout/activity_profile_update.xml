@@ -81,7 +81,7 @@
                 android:drawableLeft="@drawable/lock"
                 android:drawablePadding="8dp"
                 android:hint="Enter Your Password"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="#94DBE4" />

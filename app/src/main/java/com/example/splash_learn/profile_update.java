@@ -3,6 +3,7 @@ package com.example.splash_learn;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +32,11 @@ public class profile_update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
 
+
         pa = findViewById(R.id.sign_up_password1);
         em = findViewById(R.id.sign_up_username1);
         clg = findViewById(R.id.sign_up_college_name1);
         update = findViewById(R.id.update_button);
-
 
 
 
@@ -61,6 +62,7 @@ public class profile_update extends AppCompatActivity {
 
                 hashMap.put("college_name", clg_name);
                 reference.updateChildren(hashMap);
+                startActivity(new Intent(profile_update.this, login_activity.class));
 
 
             }

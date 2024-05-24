@@ -59,13 +59,12 @@ public class splash_activity extends AppCompatActivity {
 
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 
+
+
+
                 if (settings.getBoolean("my_first_time", true)) {
-                    //the app is being launched for first time, do something
 
                     startActivity(intent,options.toBundle());
-                    // first time task
-
-                    // record the fact that the app has been started at least once
                     settings.edit().putBoolean("my_first_time", false).commit();
                 }
                 else{

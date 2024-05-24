@@ -32,6 +32,7 @@ public class slider_activity extends AppCompatActivity {
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
 
                 if (getitem(0) > 0){
