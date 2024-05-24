@@ -30,6 +30,7 @@ public class scinece_books extends AppCompatActivity {
 
     public static int indx;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,7 @@ public class scinece_books extends AppCompatActivity {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 books.add(jsonObject1.getString("name"));
                 writers.add(jsonObject1.getString("writer"));
+
             }
 
             BookAdapter adapter = new BookAdapter(this, books);
