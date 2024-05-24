@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Profile"
+        android:id="@+id/profile_update"
+        android:icon="@drawable/profile_update"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Books"
+        android:id="@+id/books"
+        android:icon="@drawable/baseline_book_24"
+        app:showAsAction="collapseActionView"
+
+        />
+    <item
+        android:title="Rate us"
+        android:id="@+id/rate_us"
+        android:icon="@drawable/rate_us"
+        app:showAsAction="withText"
+
+        />
+    <item
+        android:title="share"
+        android:id="@+id/share"
+        android:icon="@drawable/share"
+        />
+
+
+
+
+
+</menu>

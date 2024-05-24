@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="Priority">
+        <menu>
+            <item
+                android:id="@+id/link"
+                android:icon="@drawable/baseline_link_24"
+                android:title="Education Links"
+                />
+            <item
+                android:id="@+id/university"
+                android:icon="@drawable/baseline_university_24"
+                android:title="Universities"
+                />
+        </menu>
+    </item>
+
+    <item android:title="Communications">
+        <menu>
+            <item
+                android:id="@+id/conntact"
+                android:icon="@drawable/baseline_contact_24"
+                android:title="Contact Us"
+                />
+        </menu>
+    </item>
+    <item android:title="Others">
+        <menu>
+
+            <item
+                android:id="@+id/log_out"
+                android:icon="@drawable/baseline_logout_24"
+                android:title="Log_out"
+                />
+            <item
+                android:id="@+id/sign_out"
+                android:icon="@drawable/baseline_delete_24"
+                android:title="Remove Account"
+                />
+
+        </menu>
+    </item>
+
+</menu>

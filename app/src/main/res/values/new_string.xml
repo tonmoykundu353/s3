@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="heading_fourth">Lets Learn About Admission360</string>
+    <string name="heading_one">Consistency and Hardwork</string>
+    <string name="heading_two">Focus and Effort</string>
+    <string name="heading_three">Reality Of Life</string>
+
+    <string name="desc_two">Success at anything will always come down to this: focus and effort. And we control both.\n\n - By Elon Musk</string>
+    <string name="desc_one">Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.\n\n -By Steve Jobs</string>
+    <string name="desc_three">You may not always have a comfortable life, and you will not always be able to solve all the problems at once, but do not ever underestimate the importance you can have.\n\n -By Michelle Obama</string>
+    <string name="desc_fourth">\n\n Admission360 is your one-stop solution for seamless academic success and a smooth university admission journey.\n\n This innovative app is designed to empower students in their pursuit of higher education by providing a wealth of features and resources.</string>
+    <string name="OpenDrawer">Open navigation drawer</string>
+    <string name="CloseDrawer">Close navigation drawer</string>
+
+    <string name="pele">সহজে জেতার আনন্দ কোথায় ? বাধা যত বিশাল , বিজয়ের আনন্দও ততই বাঁধভাঙ্গা । --Pele</string>
+    <string name="ali">কখনো হাল ছেড়ে দিও না । এখনকার এই দাঁতে দাঁত চেপে করা কষ্টগুলো তোমাকে বিজয়ীর খেতাব দেবে সারাজীবনের জন্য । --Muhammad Ali</string>
+    <string name="apj">আকাশের দিকে তাকাও । আমরা একা নই । পুরো মহাবিশ্ব আমাদের প্রতি বন্ধুত্বসুলভ । যারা স্বপ্ন দেখে এবং কাজ করে শুধুমাত্র তাদেরকেই শ্রেষ্ঠটা দেওয়ার জন্য চক্রান্তে লিপ্ত এই বিশ্ব । --A.P.J.Abdul Kalam</string>
+    <string name="mark"> আমি স্বপ্ন দেখেছিলাম , সেই স্বপ্নে আস্থা ছিল । আর আমি কাজটা ভালোবাসতাম । ফেসবুক বিফল হলেও আমার ভালোবাসাটা থাকত । জীবনে একটা স্বপ্ন থাকতে হয় সেই স্বপ্নকে ভালোও বসতে হয়। --Mark Zuckerberg</string>
+    <string name="jordan">আমি ব্যর্থতাকে মেনে নিতে পারি , কিন্তু আমি চেষ্টা না করাকে মেনে নিতে পারি না। --Michael Jordan</string>
+    <string name="swami">একটি লক্ষ্য ঠিক করো । সেই লক্ষ্যকে নিজের জীবনের অংশ বানিয়ে ফেলো । চিন্তা করো , স্বপ্ন দেখো , তোমার মস্তিষ্ক , পেশী , রক্তনালী পুরো শরীরে সেই লক্ষ্যকে ছড়িয়ে দাও , আর বাকি সবকিছু ভুলে যাও । —–এটাই সাফল্যের পথ । --Swami Vivekananda</string>
+    <string name="martin">তোমার জীবনে তুমি যা নিয়েই কাজ করো , তাকে সবচেয়ে ভালো ভাবে করার চেষ্টা করো । এমন ভাবে করো , যেন তোমার আগে পরে কেউ এতটা ভালো করে করতে না পারে । --Martin Luther King Jr.</string>
+    <string name="socrates">সত্যিকারের জ্ঞানী মানুষ আমরা তখনই হতে পারি যখন বুঝতে পারি , আমরা আমাদের সম্পর্কে , জীবন সম্পর্কে এবং আমাদের চারপাশের জগত সম্পর্কে কতটা কম জানি । --Socrates</string>
+    <string name="ratan">কোনও ব্যক্তি কাউকে অনুকরণ করে সাময়িকভাবে সাফল্য অর্জন করতে পারে, কিন্তু ভবিষ্যতে তিনি কখনও সাফল্য পাবেন না।” “আমি সঠিক সিদ্ধান্ত নেওয়াতে বিশ্বাসী নই। আমি সিদ্ধান্ত নিয়ে সেটিকে সঠিক বলে প্রমাণ করি।” “আপনার দিকে যে পাথর ছোড়া হচ্ছে, তা সংরক্ষণ করে রাখুন এবং তা দিনে মনুমেন্ট তৈরি করুন। --Ratan Naval Tata</string>
+    <string name="elon">কোন কিছু যদি সত্যিই তোমার কাছে গুরুত্বপূর্ণ হয় , কোন বাধাই তোমাকে থামাতে পারবে না । --Elon Musk</string>
+    <string name="steve"> আপনি যা করছেন , যদি ভালোবাসেন এবং ওই কাজে সফলতার জন্য সবকিছু করতে ইচ্ছুক থাকেন , তাহলে সেটা হাতের নাগালে পৌঁছোবে । কাজের পেছনে প্রতিটা মিনিটের মূল্যায়ন প্রয়োজন । ভাবুন আর ভাবুন ; আসলেই আপনি কি নকশা অথবা তৈরি করতে চাচ্ছেন । -- Steve Wozniak</string>
+    <string name="confucius">কখনও না পড়ে যাওয়ার মাঝে বীরত্ব নেই , পড়ে গিয়ে উঠে দাঁড়ানোর মাঝেই সত্যিকারের বীরত্ব লুকিয়ে আছে । --Confucius</string>
+
+
+
+</resources>

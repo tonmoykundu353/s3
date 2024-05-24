@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="heading_fourth">Uses of Creativity</string>
+    <string name="heading_one">Consistency and Hardwork</string>
+    <string name="heading_two">Focus and Effort</string>
+    <string name="heading_three">Reality Of Life</string>
+    
+    <string name="desc_two">Success at anything will always come down to this: focus and effort. And we control both.\n\n - By Elon Musk</string>
+    <string name="desc_one">Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.\n\n -By Steve Jobs</string>
+    <string name="desc_three">You may not always have a comfortable life, and you will not always be able to solve all the problems at once, but do not ever underestimate the importance you can have.\n\n -By Michelle Obama</string>
+    <string name="desc_fourth">Let us make our future now, and let us make our dreams tomorrows reality.\n\n - By Malala Yousafzai</string>
+</resources>

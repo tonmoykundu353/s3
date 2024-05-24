@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779121018317",
+    "project_id": "admission360-f58fd",
+    "storage_bucket": "admission360-f58fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779121018317:android:222e519d80fe1a0c187084",
+        "android_client_info": {
+          "package_name": "com.example.splash_learn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_KWhMTyqWKpbWvv4jRyFeEkPQCTjtvlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

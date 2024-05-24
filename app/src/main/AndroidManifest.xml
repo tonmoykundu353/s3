@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Admission360"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Splash_learn"
+        tools:targetApi="31">
+        <activity
+            android:name=".show_writers"
+            android:exported="false" />
+        <activity
+            android:name=".scinece_books"
+            android:exported="false" />
+        <activity
+            android:name=".profile_update"
+            android:exported="false" />
+        <activity
+            android:name=".links_webview"
+            android:exported="false" />
+        <activity
+            android:name=".university_webview"
+            android:exported="false" />
+        <activity
+            android:name=".contact_us"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2"
+            android:exported="false" />
+        <activity
+            android:name=".home_activity"
+            android:exported="false" />
+        <activity
+            android:name=".signup_activity"
+            android:exported="false" />
+        <activity
+            android:name=".slider_activity"
+            android:exported="false" />
+        <activity
+            android:name=".onboard_sliding"
+            android:exported="false" />
+        <activity
+            android:name=".login_activity"
+            android:exported="false" />
+        <activity
+            android:name=".splash_activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
