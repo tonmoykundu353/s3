@@ -86,7 +86,5 @@ public class splash_activity extends AppCompatActivity {
         splash_upper_shape.startAnimation(my_animation1);
         splash_lower_shape.startAnimation(my_animation1);
 
-
-
     }
 }
